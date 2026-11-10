@@ -1,0 +1,714 @@
+<style>
+  body { background-color: transparent !important; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+  .club-sidebar-minimal { 
+      width: 100%; 
+      max-width: 310px; 
+      margin: 0 auto; 
+      background: #0d0d14; 
+      color: #e0e0e0;
+      padding: 12px; 
+      border-radius: 16px; 
+      border: 1px solid rgba(123, 44, 191, 0.4); 
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), 0 0 15px rgba(123, 44, 191, 0.2); 
+      box-sizing: border-box; 
+      overflow: hidden;
+  }
+  
+  /* Header Section with Custom Background Image */
+  .header-section { 
+      text-align: center; 
+      padding: 20px 10px; 
+      margin: -12px -12px 15px -12px;
+      background: linear-gradient(rgba(13, 13, 20, 0.75), rgba(13, 13, 20, 0.95)), url('https://raw.githubusercontent.com/arifislam355865-max/song/main/Regal%20Moonlit%20Chess%20Throne.png');
+      background-size: cover;
+      background-position: center;
+      border-bottom: 1px solid rgba(123, 44, 191, 0.4);
+      position: relative;
+  }
+
+  .club-logo-container {
+      width: 140px;
+      height: 140px;
+      margin: 0 auto 12px auto;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid #7b2cbf;
+      box-shadow: 0 0 20px rgba(123, 44, 191, 0.6), 0 0 10px rgba(212, 175, 55, 0.4);
+      background: #000;
+  }
+  .club-logo-container img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  
+  .club-name { font-size: 20px; font-weight: 800; color: #ffffff; display: flex; justify-content: center; align-items: center; letter-spacing: 0.5px; }
+  .shaking-crown { display: inline-block; margin-left: 8px; animation: shakeCrown 2s infinite ease-in-out; }
+  @keyframes shakeCrown { 0%, 100% { transform: rotate(0deg); } 25% { transform: rotate(-15deg); } 50% { transform: rotate(15deg); } 75% { transform: rotate(-15deg); } }
+  
+  .badge-cyberpunk {
+      display: inline-block;
+      background: linear-gradient(135deg, #5a189a, #7b2cbf);
+      color: #e0aaff;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 12px;
+      margin-top: 4px;
+      letter-spacing: 0.5px;
+      box-shadow: 0 0 8px rgba(123, 44, 191, 0.4);
+  }
+  
+  .tagline-wrapper { display: flex; justify-content: center; align-items: center; gap: 8px; margin-top: 8px; }
+  .club-tagline { font-size: 10px; color: #9d4edd; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; }
+  .butterfly-fly { display: inline-block; font-size: 14px; animation: butterflyNatural 4s ease-in-out infinite; }
+  @keyframes butterflyNatural { 0%, 100% { transform: translateY(0) rotate(0deg); } 25% { transform: translateY(-5px) translateX(-5px) rotate(-10deg); } 50% { transform: translateY(-8px) translateX(0px) rotate(0deg); } 75% { transform: translateY(-5px) translateX(5px) rotate(10deg); } }
+  
+  /* GIF Section */
+  .gif-container { 
+      width: 100%; 
+      margin: 12px 0; 
+      border-radius: 10px; 
+      overflow: hidden; 
+      border: 1px solid rgba(157, 78, 221, 0.5); 
+      box-shadow: 0 0 12px rgba(123, 44, 191, 0.3);
+  }
+  .gif-container img { width: 100%; display: block; }
+  .tagline-custom { text-align: center; margin: 0 0 15px 0; font-size: 11px; font-weight: 600; color: #c77dff; letter-spacing: 0.5px; }
+
+  /* Music Widget */
+  .music-widget { background: #14131f; border: 1px solid #3c096c; border-radius: 10px; padding: 12px; margin-bottom: 20px; transition: 0.3s; }
+  .music-widget:hover { box-shadow: 0 0 12px rgba(123, 44, 191, 0.3); border-color: #7b2cbf; }
+  .music-header { color: #c77dff; font-size: 13px; font-weight: bold; text-align: center; margin-bottom: 6px; }
+  .song-title { font-size: 12px; text-align: center; color: #ffffff; font-weight: bold; margin-bottom: 8px; }
+  .music-controls { display: flex; justify-content: center; align-items: center; gap: 15px; margin-bottom: 5px; }
+  .music-controls button { background: none; border: none; cursor: pointer; color: #e0aaff; font-size: 18px; transition: 0.2s; }
+  .music-controls button:hover { transform: scale(1.2); color: #ffffff; }
+  .visualizer { display: flex; justify-content: center; align-items: center; gap: 3px; height: 20px; margin: 5px 0 10px 0; }
+  .bar { width: 3px; height: 5px; background: #9d4edd; animation: dance 1s infinite ease-in-out; }
+  @keyframes dance { 0%, 100% { height: 5px; } 50% { height: 18px; } }
+  .bar:nth-child(2) { animation-delay: 0.2s; } .bar:nth-child(3) { animation-delay: 0.4s; } .bar:nth-child(4) { animation-delay: 0.6s; } .bar:nth-child(5) { animation-delay: 0.8s; }
+  .progress-bg { width: 100%; height: 4px; background: #240046; border-radius: 2px; cursor: pointer; margin-bottom: 10px; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, #7b2cbf, #c77dff); width: 0%; border-radius: 2px; }
+  .playlist-container { max-height: 120px; overflow-y: auto; font-size: 11px; border-top: 1px solid #3c096c; padding-top: 5px; }
+  .playlist-container::-webkit-scrollbar { width: 4px; }
+  .playlist-container::-webkit-scrollbar-track { background: #14131f; }
+  .playlist-container::-webkit-scrollbar-thumb { background-color: #5a189a; border-radius: 3px; }
+  .playlist-item { padding: 5px; cursor: pointer; color: #b8c0e0; border-bottom: 1px dotted #240046; transition: 0.2s; }
+  .playlist-item:hover { color: #e0aaff; padding-left: 8px; background: rgba(123, 44, 191, 0.15); }
+
+  /* Links & Custom Sections */
+  .section-title { font-size: 13px; text-transform: uppercase; letter-spacing: 2px; color: #e0aaff; margin-bottom: 15px; font-weight: 700; text-align: center; }
+  .minimal-links a { display: block; padding: 10px; color: #c4b5fd; text-decoration: none; font-size: 13px; border-bottom: 1px solid #240046; transition: 0.2s; border-radius: 6px; }
+  .minimal-links a:hover { color: #ffffff; background: rgba(123, 44, 191, 0.2); padding-left: 14px; }
+
+  /* Road to Glory */
+  .rtg-wrapper { width: 100%; margin: 20px auto; background: #14131f; padding: 15px; border-radius: 12px; border: 1px solid #3c096c; text-align: center; box-sizing: border-box; }
+  .rtg-title { font-size: 14px; font-weight: 800; color: #e0aaff; margin-bottom: 10px; text-transform: uppercase; }
+  .rtg-progress-wrapper { background: #240046; height: 10px; border-radius: 6px; overflow: hidden; margin: 10px 0; }
+  .rtg-progress-bar { height: 100%; background: linear-gradient(90deg, #7b2cbf, #ff9e00); width: 0%; transition: width 1.5s ease-in-out; }
+  .rtg-stats { display: flex; justify-content: space-between; font-size: 11px; font-weight: bold; color: #c77dff; }
+
+  /* New Royals Widget */
+  .new-royals-widget { margin: 20px 0; background: #14131f; border-radius: 12px; padding: 15px 12px; border: 1px solid #3c096c; box-sizing: border-box; }
+  .nr-header { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+  .nr-header-icon { font-size: 18px; }
+  .nr-header h2 { color: #ffffff; font-size: 15px; font-weight: 700; margin: 0; }
+  .nr-subtitle { color: #9d4edd; font-size: 11px; margin-bottom: 12px; padding-left: 26px; }
+  .nr-welcome-box { background: #0f0e17; border: 1px solid #240046; border-radius: 10px; padding: 10px 8px; margin-bottom: 10px; }
+  .nr-welcome-title { text-align: center; color: #e0aaff; font-size: 12px; font-weight: 600; margin-bottom: 10px; }
+  .nr-member { display: flex; align-items: center; gap: 10px; background: #1a1926; border: 1px solid #3c096c; border-radius: 10px; padding: 8px 10px; margin-bottom: 8px; transition: all 0.25s ease; }
+  .nr-member:hover { border-color: #7b2cbf; transform: translateX(3px); box-shadow: 0 4px 12px rgba(123, 44, 191, 0.3); }
+  .nr-avatar { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 2px solid #7b2cbf; background: #000; flex-shrink: 0; }
+  .nr-info { flex: 1; min-width: 0; }
+  .nr-username { color: #ffffff; font-size: 13px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .nr-username a { color: inherit; text-decoration: none; }
+  .nr-username a:hover { color: #e0aaff; }
+  .nr-rating { color: #b8c0e0; font-size: 11px; margin-top: 1px; }
+  .nr-footer { text-align: center; color: #9d4edd; font-size: 11px; font-weight: 500; margin-top: 8px; }
+  .nr-loading, .nr-error { text-align: center; padding: 15px 10px; font-size: 12px; color: #9d4edd; }
+
+  /* Daily Points Race Widget */
+  .race-widget-container { 
+      width: 100%; 
+      background: #14131f; 
+      border-radius: 12px; 
+      padding: 14px; 
+      box-sizing: border-box; 
+      text-align: center; 
+      position: relative;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+      border: 1px solid #3c096c;
+      margin: 20px 0;
+  }
+  .race-widget-container::before {
+      content: '';
+      position: absolute;
+      top: -2px; bottom: -2px; left: -2px; right: -2px;
+      background: linear-gradient(60deg, #7b2cbf, #3a0ca3, #4cc9f0, #7b2cbf);
+      background-size: 300% 300%;
+      border-radius: 13px;
+      z-index: -1;
+      opacity: 0.4;
+      animation: auroraGlow 8s ease infinite;
+      filter: blur(5px);
+  }
+  @keyframes auroraGlow { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+  .race-title { font-size: 16px; font-weight: 800; color: #ffffff; text-align: left; padding-left: 4px; margin-bottom: 2px; letter-spacing: 0.5px; text-transform: uppercase; }
+  .race-subtitle { font-size: 11px; font-weight: 800; font-style: italic; text-align: left; padding-left: 4px; margin-bottom: 12px; color: #e0aaff; letter-spacing: 0.3px; }
+  .podium-container { display: flex; justify-content: space-between; align-items: flex-end; height: 235px; margin-bottom: 10px; background: #0f0e17; border-radius: 10px; border: 1px solid #240046; padding: 0 2px 8px 2px; }
+  .podium-column { display: flex; flex-direction: column; align-items: center; width: 78px; position: relative; transition: transform 0.3s; }
+  .podium-column:hover { transform: translateY(-4px); }
+  .stat-capsule { background: #1a1926; border: 1px solid #3c096c; border-radius: 8px; padding: 2px 5px; font-size: 9px; font-weight: bold; color: #e0aaff; display: flex; align-items: center; gap: 3px; margin-bottom: 5px; min-height: 16px; white-space: nowrap; }
+  .profile-wrapper { position: relative; margin-bottom: 5px; }
+  .profile-img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 2px solid #5a189a; background: #000; }
+  .rank-badge { position: absolute; top: -7px; left: 50%; transform: translateX(-50%); width: 15px; height: 15px; border-radius: 50%; font-size: 9px; font-weight: bold; display: flex; align-items: center; justify-content: center; color: #fff; z-index: 10; }
+  .rank-1 .profile-img { width: 54px; height: 54px; border-color: #c77dff; box-shadow: 0 0 12px rgba(199, 125, 255, 0.6); }
+  .rank-1 .rank-badge { background: linear-gradient(135deg, #7b2cbf, #c77dff); }
+  .rank-2 .rank-badge { background: linear-gradient(135deg, #4a4e69, #9a8c98); }
+  .rank-3 .rank-badge { background: linear-gradient(135deg, #ff9e00, #ff6d00); }
+  .username-race { font-size: 10px; font-weight: bold; color: #ffffff; text-decoration: none; width: 72px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 3px; display: block; }
+  .username-race:hover { color: #c77dff; }
+  .mode-badges { display: flex; justify-content: center; gap: 3px; max-width: 74px; flex-wrap: wrap; min-height: 18px; margin-bottom: 5px; background: #1a1926; padding: 2px 4px; border-radius: 5px; border: 1px solid #240046; }
+  .badge-item { font-size: 9px; font-weight: bold; color: #e0e0e0; display: flex; align-items: center; gap: 2px; }
+  .mode-icon-img { width: 13px; height: 13px; object-fit: contain; vertical-align: middle; display: inline-block; }
+  .pillar { width: 100%; border-top-left-radius: 8px; border-top-right-radius: 8px; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+  .rank-1 .pillar { height: 70px; background: linear-gradient(180deg, #7b2cbf, #3c096c); }
+  .rank-2 .pillar { height: 50px; background: linear-gradient(180deg, #4a4e69, #22223b); }
+  .rank-3 .pillar { height: 40px; background: linear-gradient(180deg, #ff9e00, #9e5a00); }
+  .pts { font-size: 13px; font-weight: 900; color: #fff; }
+  .pts-label { font-size: 7px; text-transform: uppercase; opacity: 0.9; font-weight: bold; color: #e0aaff; }
+  .footer-wrapper-race { display: flex; align-items: center; justify-content: center; gap: 5px; margin-top: 6px; }
+  .pulse-dot { width: 5px; height: 5px; background-color: #00f5d4; border-radius: 50%; box-shadow: 0 0 8px #00f5d4; animation: pulse 1.6s infinite; }
+  @keyframes pulse { 0% { transform: scale(0.95); } 70% { transform: scale(1.2); } 100% { transform: scale(0.95); } }
+  .footer-info-race { font-size: 8px; color: #b8c0e0; font-family: monospace; text-align: left; white-space: pre-line; line-height: 1.2; }
+
+  /* Invite Box */
+  .invite-box { margin-top: 20px; padding: 12px; background: #14131f; border: 1px solid #3c096c; border-radius: 10px; text-align: center; }
+  .invite-box-title { font-size: 13px; font-weight: bold; color: #ffffff; margin-bottom: 5px; }
+  .invite-box-text { font-size: 11px; color: #b8c0e0; margin-bottom: 10px; }
+  .invite-btn { width: 100%; background: linear-gradient(135deg, #7b2cbf, #5a189a); color: white; border: none; padding: 10px 0; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 12px; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; text-decoration: none; box-sizing: border-box; box-shadow: 0 4px 12px rgba(123, 44, 191, 0.4); }
+  .invite-btn:hover { background: linear-gradient(135deg, #9d4edd, #7b2cbf); }
+  .shake-effect { animation: shake 0.4s ease-in-out; }
+  .success-flash { background: #00f5d4 !important; color: #000 !important; }
+
+  /* Calendar */
+  .calendar-wrapper { width: 100%; margin: 0 auto; background: #14131f; border: 1px solid #3c096c; border-radius: 12px; padding: 15px; box-sizing: border-box; }
+  .cal-header { display: flex; justify-content: space-between; align-items: center; color: #ffffff; font-weight: 700; margin-bottom: 12px; letter-spacing: 1px; }
+  .cal-btn { cursor: pointer; border: none; background: #240046; color: #e0aaff; font-size: 14px; width: 28px; height: 28px; border-radius: 50%; transition: all 0.3s ease; }
+  .cal-btn:hover { background: #7b2cbf; color: white; }
+  .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; text-align: center; font-size: 11px; }
+  .cal-day-name { font-weight: bold; color: #9d4edd; padding-bottom: 8px; border-bottom: 1px solid #240046; }
+  .cal-date { padding: 6px 0; color: #b8c0e0; transition: all 0.2s; cursor: default; border-radius: 6px; }
+  .cal-date:hover { background: rgba(123, 44, 191, 0.3); color: #ffffff; }
+  .today { background: linear-gradient(135deg, #7b2cbf, #3c096c) !important; color: white !important; font-weight: bold; box-shadow: 0 0 10px rgba(123, 44, 191, 0.6); }
+</style>
+
+<div class="club-sidebar-minimal">
+  <!-- Header Section with Custom Background Image -->
+  <div class="header-section">
+    <div class="club-logo-container">
+      <img src="https://raw.githubusercontent.com/arifislam355865-max/hrhr/main/today.png" alt="The Royal File Crest">
+    </div>
+    <div class="club-name">The Royal File <span class="shaking-crown">👑</span></div>
+    <div class="badge-cyberpunk">✦ Cyberpunk & Royal Strategy</div>
+    
+    <div class="tagline-wrapper">
+        <span class="butterfly-fly">✨</span>
+        <div class="club-tagline">WHERE STRATEGY MEETS ROYALTY</div>
+        <span class="butterfly-fly" style="animation-delay: 1.5s;">✨</span>
+    </div>
+  </div>
+
+  <!-- SINGLE TAB CONTENT -->
+  <div>
+    <!-- GIF Section -->
+    <div class="gif-container">
+      <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3Z0ZWFubW03bTZscDZqaHk0Mmt5bTdoNHE4bHZ0bWZ3eTJ5OGJjZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWZfY3Q9Zw/qLErpwsfLyY6RSTJlJ/giphy.gif" alt="Club GIF">
+    </div>
+    <div class="tagline-custom">Think Deep • Move Wise • Rule Beyond</div>
+
+    <!-- Music Widget -->
+    <div class="music-widget">
+      <div class="music-header">Royal Melodies 🎵</div>
+      <div id="song-title" class="song-title">Select a Song</div>
+      <div class="visualizer" id="viz">
+          <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+      </div>
+      <div class="progress-bg" id="progressContainer"><div class="progress-fill" id="progressBar"></div></div>
+      <div class="music-controls">
+          <button onclick="prevSong()">⏮</button>
+          <button id="playBtn" onclick="togglePlay()">▶</button>
+          <button onclick="nextSong()">⏭</button>
+      </div>
+      <div id="playlist" class="playlist-container"></div>
+      <audio id="audioPlayer"></audio>
+    </div>
+
+    <!-- Road to Glory (Manual Count: 913 / Goal: 1000) -->
+    <div class="rtg-wrapper">
+      <div class="rtg-title">Road to Glory 🏆</div>
+      <div class="rtg-progress-wrapper"><div id="rtg-bar" class="rtg-progress-bar"></div></div>
+      <div class="rtg-stats"><span id="current-count">913+</span><span>1000</span></div>
+    </div>
+
+    <!-- New Royals Widget -->
+    <div class="new-royals-widget">
+      <div class="nr-header">
+        <span class="nr-header-icon">♟️</span>
+        <h2>New Royals</h2>
+      </div>
+      <div class="nr-subtitle">Fresh Arrivals</div>
+      <div class="nr-welcome-box">
+        <div class="nr-welcome-title">Welcome! 🤝</div>
+        <div id="members-list">
+          <div class="nr-loading">Loading latest members...</div>
+        </div>
+      </div>
+      <div class="nr-footer">Bow to the New Royals! 👑</div>
+    </div>
+
+    <!-- Daily Points Race Widget -->
+    <div class="race-widget-container">
+      <div class="race-title">Daily Points Race</div>
+      <div class="race-subtitle">Claim the crown...</div>
+      <div class="podium-container" id="podium">
+          <div id="loading-msg" style="width:100%; text-align:center; color:#9d4edd; font-size:11px; margin-top:90px;">Connecting to Cloud...</div>
+      </div>
+      <div class="footer-wrapper-race">
+          <div class="pulse-dot"></div>
+          <div class="footer-info-race" id="update-time">Initializing...</div>
+      </div>
+    </div>
+
+    <div class="section-title" style="margin-top: 20px;">Quick Links</div>
+    <div class="minimal-links">
+      <a href="https://www.chesswrap.me/" target="_blank">📰 Club Recap</a>
+      <a href="https://www.chess.com/clubs/events/the-royal-file" target="_blank">📅 Club Events</a>
+      <a href="https://www.chess.com/leaderboard/live/rapid?group=917905" target="_blank">📊 Leaderboard</a>
+      <a href="https://www.chess.com/clubs/forum/view/guess-the-elo-1085" target="_blank">🤔 Guess the Elo</a>
+      <a href="https://www.chess.com/clubs/forum/view/advertisement-forum-153" target="_blank">📢 Advertisement Forum</a>
+      <a href="https://smartpolls.co.uk/p/149778#" target="_blank">⭐ Rate Our Club</a>
+      <a href="https://www.chess.com/club/royal-file-staff" target="_blank">🏢 Club HQ</a>
+    </div>
+
+    <div class="calendar-wrapper" style="margin-top: 20px;">
+      <div class="cal-header"><button class="cal-btn" onclick="changeMonth(-1)">◀</button><div id="monthDisplay"></div><button class="cal-btn" onclick="changeMonth(1)">▶</button></div>
+      <div class="cal-grid" id="calGrid"></div>
+    </div>
+
+    <!-- Copy Invite Link Box -->
+    <div class="invite-box">
+      <div class="invite-box-title">Grow the Realm 👑</div>
+      <div class="invite-box-text">Challenge together, grow together. Invite your allies to join The Royal File!</div>
+      <button class="invite-btn" onclick="copyInviteLink()">🔗 Copy Invite Link</button>
+    </div>
+  </div>
+
+  <div style="text-align: center; margin-top: 25px; border-top: 1px solid #3c096c; padding-top: 15px; margin-bottom: 10px;">
+    <div style="font-size: 10px; color: #c77dff; font-style: italic;">"Where Every Move Is A Legacy"</div>
+    <div style="font-size: 10px; color: #9d4edd; margin-top: 5px; letter-spacing: 1px;">THE ROYAL FILE | EST. 2026</div>
+  </div>
+</div>
+
+<script>
+  // Set Manual Member Count & Progress for Road to Glory (913 / 1000)
+  function setManualRTG() {
+      const currentMembers = 913; 
+      const targetGoal = 1000;
+      document.getElementById('current-count').innerText = currentMembers.toLocaleString() + "+";
+      document.getElementById('rtg-bar').style.width = Math.min((currentMembers / targetGoal) * 100, 100) + '%';
+  }
+  setManualRTG();
+
+  const songs = [
+      { title: "MANIAC", src: "https://github.com/arifislam355865-max/song/raw/main/ZAYDE%20WOLF%20SAM%20TINNESZ%20EDVN%20-%20MANIAC%20-%20Official%20Lyric%20Video_128k.mp3" },
+      { title: "Alone Pt. II", src: "https://github.com/arifislam355865-max/song/raw/main/Alan%20Walker%20%26%20Ava%20Max%20-%20Alone%2C%20Pt.%20II%20(Lyrics)_128k.mp3" },
+      { title: "Dai Dai", src: "https://github.com/arifislam355865-max/song/raw/main/Shakira%2C%20Burna%20Boy%20-%20Dai%20Dai%20(Official%20Video)_128k.mp3" },
+      { title: "ODNOGO", src: "https://github.com/arifislam355865-max/song/raw/main/TATYANA%20KURTUKOVA%20-%20ODNOGO%20(lyrics)_128k.mp3" },
+      { title: "Headlights", src: "https://github.com/arifislam355865-max/song/raw/main/Alok%2C%20Alan%20Walker%20-%20Headlights%20(Lyrics)%20ft.%20KIDDO_MP3%20(1).mp3" },
+      { title: "Unstoppable", src: "https://github.com/arifislam355865-max/song/raw/main/YTDown.com_YouTube_Sia-Unstoppable-Lyrics_Media_oS07d8Gr4tw_008_128k.m4a" },
+      { title: "Faded", src: "https://github.com/arifislam355865-max/song/raw/main/Alan%20Walker%20-%20Faded%20(Lyrics)_128k.mp3" },
+      { title: "Believer", src: "https://github.com/arifislam355865-max/song/raw/main/Imagine%20Dragons%20-%20Believer%20(Lyrics)_128k.mp3" },
+      { title: "Darkside", src: "https://github.com/arifislam355865-max/song/raw/main/NEONI%20-%20Darkside%20(Lyrics)_128k.mp3" },
+      { title: "Suzume", src: "https://github.com/arifislam355865-max/song/raw/main/RADWIMPS%20-%20Suzume%20(Lyrics)%20ft.%20Toaka_128k%20(2).mp3" },
+      { title: "Broken Angel", src: "https://github.com/arifislam355865-max/song/raw/main/Arash%20feat.%20Helena%20-%20Broken%20Angel%20(Lyrics)_128k.mp3" },
+      { title: "Copines", src: "https://github.com/arifislam355865-max/song/raw/main/Aya%20Nakamura%20-%20Copines%20(Lyrics)_128k.mp3" },
+      { title: "Royalty", src: "https://github.com/arifislam355865-max/song/raw/main/Egzod%20%26%20Maestro%20Chives%20-%20Royalty%20(Lyrics)%20ft.%20Neoni_128k.mp3" },
+      { title: "Bilionera", src: "https://github.com/arifislam355865-max/song/raw/main/Bilionera%20Lyrics%20_%20Otilia%20Bilionera%20song%20lyrics_128k.mp3" },
+      { title: "Unravel", src: "https://github.com/arifislam355865-max/song/raw/main/TK%20from%20Ling%20toshite%20Sigure%20%E2%80%93%20Unravel%20(Tokyo%20Ghoul%20Opening)%20Lyrics%20%5BColor%20Coded%20_Jpn_Rom_Eng%5D_128k%20(1).mp3" }
+  ];
+  let index = 0;
+  const audio = document.getElementById('audioPlayer'), playBtn = document.getElementById('playBtn'), progressBar = document.getElementById('progressBar'), playlistEl = document.getElementById('playlist'), bars = document.querySelectorAll('.bar');
+  
+  function togglePlay() { 
+      if(audio.paused) { audio.play(); playBtn.textContent = "⏸"; bars.forEach(b => b.style.animationPlayState = "running"); } 
+      else { audio.pause(); playBtn.textContent = "▶"; bars.forEach(b => b.style.animationPlayState = "paused"); } 
+  }
+
+  document.getElementById('progressContainer').onclick = (e) => { audio.currentTime = (e.offsetX / e.target.offsetWidth) * audio.duration; };
+  audio.ontimeupdate = () => { progressBar.style.width = (audio.currentTime / audio.duration) * 100 + "%"; };
+  function loadSong(i) { audio.src = songs[i].src; document.getElementById('song-title').textContent = songs[i].title; }
+  function nextSong() { index = (index + 1) % songs.length; loadSong(index); audio.play(); playBtn.textContent = "⏸"; }
+  function prevSong() { index = (index - 1 + songs.length) % songs.length; loadSong(index); audio.play(); playBtn.textContent = "⏸"; }
+  songs.forEach((s, i) => { const div = document.createElement('div'); div.className = "playlist-item"; div.textContent = (i+1) + ". " + s.title; div.onclick = () => { index = i; loadSong(i); audio.play(); playBtn.textContent = "⏸"; }; playlistEl.appendChild(div); });
+  loadSong(0); bars.forEach(b => b.style.animationPlayState = "paused");
+  
+  function copyInviteLink() {
+      const link = "https://www.chess.com/club/the-royal-file/join";
+      const btn = document.querySelector('.invite-btn');
+      const textArea = document.createElement("textarea");
+      textArea.value = link;
+      textArea.style.position = "fixed";
+      textArea.style.left = "-9999px";
+      document.body.appendChild(textArea);
+      textArea.select();
+      try {
+          document.execCommand('copy');
+          btn.classList.add('shake-effect', 'success-flash');
+          btn.textContent = "✅ Link Copied!";
+      } catch (err) { alert("Copy failed: " + link); }
+      document.body.removeChild(textArea);
+      setTimeout(() => {
+          btn.classList.remove('shake-effect', 'success-flash');
+          btn.textContent = "🔗 Copy Invite Link";
+      }, 1000);
+  }
+  
+  let currentViewDate = new Date();
+  function renderCalendar() { const grid = document.getElementById('calGrid'); const display = document.getElementById('monthDisplay'); grid.innerHTML = '<div class="cal-day-name">Su</div><div class="cal-day-name">Mo</div><div class="cal-day-name">Tu</div><div class="cal-day-name">We</div><div class="cal-day-name">Th</div><div class="cal-day-name">Fr</div><div class="cal-day-name">Sa</div>'; const year = currentViewDate.getFullYear(), month = currentViewDate.getMonth(); display.textContent = currentViewDate.toLocaleDateString('en-US', { month: 'short', year: 'numeric' }); const firstDay = new Date(year, month, 1).getDay(), daysInMonth = new Date(year, month + 1, 0).getDate(); for (let i = 0; i < firstDay; i++) grid.innerHTML += '<div></div>'; for (let i = 1; i <= daysInMonth; i++) { const isToday = (i === new Date().getDate() && month === new Date().getMonth() && year === currentViewDate.getFullYear()) ? 'today' : ''; grid.innerHTML += `<div class="cal-date ${isToday}">${i}</div>`; } }
+  function changeMonth(dir) { currentViewDate.setMonth(currentViewDate.getMonth() + dir); renderCalendar(); }
+  renderCalendar();
+
+  // New Royals Script
+  const CLUB_ID = "the-royal-file";
+  const REFRESH_INTERVAL = 30 * 1000;
+
+  async function fetchJSON(url) {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error("Failed to fetch");
+    return res.json();
+  }
+
+  async function getPlayerData(username) {
+    try {
+      const [profile, stats] = await Promise.all([
+        fetchJSON(`https://api.chess.com/pub/player/${username}`),
+        fetchJSON(`https://api.chess.com/pub/player/${username}/stats`)
+      ]);
+
+      const ratings = [
+        { name: "Rapid", value: stats?.chess_rapid?.last?.rating },
+        { name: "Blitz", value: stats?.chess_blitz?.last?.rating },
+        { name: "Bullet", value: stats?.chess_bullet?.last?.rating },
+        { name: "Daily", value: stats?.chess_daily?.last?.rating }
+      ].filter(r => r.value != null && r.value > 0);
+
+      let ratingText = "Unrated";
+      if (ratings.length > 0) {
+        const highest = ratings.reduce((a, b) => (a.value > b.value ? a : b));
+        ratingText = `${highest.name}: ${highest.value}`;
+      }
+
+      return {
+        username: profile.username,
+        avatar: profile.avatar || "https://www.chess.com/bundles/web/images/user-image.svg",
+        ratingText
+      };
+    } catch (e) {
+      return {
+        username,
+        avatar: "https://www.chess.com/bundles/web/images/user-image.svg",
+        ratingText: "Unrated"
+      };
+    }
+  }
+
+  async function loadMembers() {
+    const container = document.getElementById("members-list");
+
+    try {
+      const data = await fetchJSON(`https://api.chess.com/pub/club/${CLUB_ID}/members`);
+
+      const map = new Map();
+      ["weekly", "monthly", "all_time"].forEach(section => {
+        (data[section] || []).forEach(m => {
+          const existing = map.get(m.username);
+          if (!existing || m.joined > existing.joined) {
+            map.set(m.username, m);
+          }
+        });
+      });
+
+      const latest = Array.from(map.values())
+        .sort((a, b) => b.joined - a.joined)
+        .slice(0, 3);
+
+      if (latest.length === 0) {
+        container.innerHTML = `<div class="nr-error">No members found</div>`;
+        return;
+      }
+
+      const members = await Promise.all(latest.map(m => getPlayerData(m.username)));
+
+      container.innerHTML = members.map(m => `
+        <div class="nr-member">
+          <img class="nr-avatar" src="${m.avatar}" alt="${m.username}"
+               onerror="this.src='https://www.chess.com/bundles/web/images/user-image.svg'">
+          <div class="nr-info">
+            <div class="nr-username">
+              <a href="https://www.chess.com/member/${m.username}" target="_blank">@${m.username}</a>
+            </div>
+            <div class="nr-rating">${m.ratingText}</div>
+          </div>
+        </div>
+      `).join("");
+
+    } catch (err) {
+      console.error(err);
+      container.innerHTML = `<div class="nr-error">Failed to load members</div>`;
+    }
+  }
+
+  loadMembers();
+  setInterval(loadMembers, REFRESH_INTERVAL);
+
+  // Daily Points Race System Script
+  const DEFAULT_AVATAR_RACE = 'https://www.chess.com/bundles/web/images/user-image.007dad08.svg';
+  const OWNER_USERNAME = 'oo_arabi';
+  
+  const MODE_ICONS = { 
+      rapid: '<img src="https://raw.githubusercontent.com/arifislam355865-max/nmrQWSA/main/white%203.png" class="mode-icon-img">',
+      bullet: '<img src="https://raw.githubusercontent.com/arifislam355865-max/nmrQWSA/main/white1.png" class="mode-icon-img">',
+      blitz: '<img src="https://raw.githubusercontent.com/arifislam355865-max/nmrQWSA/main/white%202.png" class="mode-icon-img">',
+      daily: '📅' 
+  };
+ 
+  const BIN_ID = '6a5090bbf5f4af5e297b396c';
+  const API_KEY = '$2a$10$QQhk9bjohcodNyTgm79FG.WStnpidQ0QsU21mMt158se8850Z83Xe';
+  const CACHE_DURATION = 7200000;
+  const LOCAL_CACHE_KEY = 'royal_file_daily_race_cache';
+
+  async function initRaceSystem() {
+      try {
+          const localRaw = localStorage.getItem(LOCAL_CACHE_KEY);
+          if (localRaw) {
+              const localData = JSON.parse(localRaw);
+              const now = Date.now();
+              if (localData.timestamp && (now - localData.timestamp < CACHE_DURATION) && localData.leaderboard) {
+                  renderPodium(localData.leaderboard, localData.timestamp);
+                  return;
+              }
+          }
+      } catch (e) {}
+
+      try {
+          const res = await fetch(`https://api.jsonbin.v3/b/${BIN_ID}/latest`, {
+              headers: { 'X-Bin-Meta': 'true', 'X-Master-Key': API_KEY }
+          });
+          if (res.ok) {
+              const responseData = await res.json();
+              const serverData = responseData.record;
+              if (serverData && serverData.leaderboard && serverData.leaderboard.length > 0) {
+                  const lastUpdatedTime = serverData.timestamp ? parseInt(serverData.timestamp) : 0;
+                  const now = Date.now();
+                  if (lastUpdatedTime && (now - lastUpdatedTime < CACHE_DURATION)) {
+                      saveToLocalCache(serverData.leaderboard, lastUpdatedTime);
+                      renderPodium(serverData.leaderboard, lastUpdatedTime);
+                      return;
+                  }
+              }
+          }
+      } catch (e) {}
+
+      document.getElementById('loading-msg').innerText = "Refreshing Leaderboard...";
+      await refreshGlobalData();
+  }
+
+  function saveToLocalCache(leaderboard, timestamp) {
+      try {
+          localStorage.setItem(LOCAL_CACHE_KEY, JSON.stringify({
+              leaderboard: leaderboard,
+              timestamp: timestamp
+          }));
+      } catch (e) {}
+  }
+
+  async function refreshGlobalData() {
+      try {
+          const clubRes = await fetch('https://api.chess.com/pub/club/the-royal-file/members');
+          const clubData = await clubRes.json();
+          const allMembers = [
+              ...(clubData.owner ? [clubData.owner] : []),
+              ...(clubData.admin || []),
+              ...(clubData.weekly || []),
+              ...(clubData.all_time || [])
+          ];
+          let uniqueUsernames = Array.from(new Set(allMembers.map(m => m.username)));
+          if (!uniqueUsernames.map(u => u.toLowerCase()).includes(OWNER_USERNAME)) {
+              uniqueUsernames.push(OWNER_USERNAME);
+          }
+
+          let leaderboardData = [];
+          const now = new Date();
+          const year = now.getUTCFullYear();
+          const month = String(now.getUTCMonth() + 1).padStart(2, '0');
+          const todayStr = `${year}-${month}-${String(now.getUTCDate()).padStart(2, '0')}`;
+          const batchSize = 5;
+
+          for (let i = 0; i < uniqueUsernames.length; i += batchSize) {
+              const batch = uniqueUsernames.slice(i, i + batchSize);
+              await Promise.all(batch.map(async (username) => {
+                  let avatar = DEFAULT_AVATAR_RACE;
+                  let points = 0, wins = 0, draws = 0;
+                  let modePoints = { rapid: 0, blitz: 0, bullet: 0, daily: 0 };
+                  let modeCounts = { rapid: 0, blitz: 0, bullet: 0, daily: 0 };
+                  try {
+                      const gamesRes = await fetch(`https://api.chess.com/pub/player/${username}/games/${year}/${month}`);
+                      if (gamesRes.ok) {
+                          const gamesData = await gamesRes.json();
+                          if (gamesData.games) {
+                              gamesData.games.forEach(game => {
+                                  const gameDate = new Date(game.end_time * 1000).toISOString().split('T')[0];
+                                  if (gameDate === todayStr && game.rated === true) {
+                                      let isWhite = game.white.username.toLowerCase() === username.toLowerCase();
+                                      let result = isWhite ? game.white.result : game.black.result;
+                                      let timeClass = game.time_class || 'rapid';
+                                      
+                                      let earnedPoints = 0;
+                                      if (result === 'win') {
+                                          wins++;
+                                          if (timeClass === 'rapid') earnedPoints = 15;
+                                          else if (timeClass === 'blitz') earnedPoints = 9;
+                                          else if (timeClass === 'bullet') earnedPoints = 3;
+                                          else earnedPoints = 15;
+                                          
+                                          points += earnedPoints;
+                                          if (modePoints[timeClass] !== undefined) { 
+                                              modePoints[timeClass] += earnedPoints; 
+                                              modeCounts[timeClass]++; 
+                                          }
+                                      } else if (['agreed', 'stalemate', 'repetition', 'insufficient', '50move'].includes(result)) {
+                                          draws++;
+                                          if (timeClass === 'rapid') earnedPoints = 5;
+                                          else if (timeClass === 'blitz') earnedPoints = 3;
+                                          else if (timeClass === 'bullet') earnedPoints = 1;
+                                          else earnedPoints = 5;
+                                          
+                                          points += earnedPoints;
+                                          if (modePoints[timeClass] !== undefined) {
+                                              modePoints[timeClass] += earnedPoints;
+                                          }
+                                      }
+                                  }
+                              });
+                          }
+                      }
+                  } catch (e) {}
+
+                  if (points > 0) {
+                      try {
+                          const profileRes = await fetch(`https://api.chess.com/pub/player/${username}`);
+                          if (profileRes.ok) {
+                              const profileData = await profileRes.json();
+                              if (profileData.avatar) avatar = profileData.avatar;
+                          }
+                      } catch (e) {}
+                  }
+
+                  if (points > 0 || username.toLowerCase() === OWNER_USERNAME) {
+                      let dominantMode = 'rapid';
+                      let maxWins = -1;
+                      Object.keys(modeCounts).forEach(m => {
+                          if(modeCounts[m] > maxWins) { maxWins = modeCounts[m]; dominantMode = m; }
+                      });
+                      leaderboardData.push({ username, points, avatar, wins, draws, modePoints, dominantMode });
+                  }
+              }));
+              if (i + batchSize < uniqueUsernames.length) await new Promise(r => setTimeout(r, 200));
+          }
+
+          leaderboardData.sort((a, b) => b.points - a.points);
+          const timestamp = Date.now();
+
+          saveToLocalCache(leaderboardData, timestamp);
+
+          try {
+              await fetch(`https://api.jsonbin.v3/b/${BIN_ID}`, {
+                  method: 'PUT',
+                  headers: { 'Content-Type': 'application/json', 'X-Master-Key': API_KEY },
+                  body: JSON.stringify({ leaderboard: leaderboardData, timestamp: timestamp })
+              });
+          } catch(err) {}
+
+          renderPodium(leaderboardData, timestamp);
+      } catch (error) {
+          document.getElementById('loading-msg').innerText = "Failed to load stats.";
+      }
+  }
+
+  function renderPodium(leaderboard, targetTime) {
+      let data = [...leaderboard].slice(0, 3);
+      while(data.length < 3) {
+          data.push({username: 'No Player', points: 0, avatar: DEFAULT_AVATAR_RACE, wins: 0, draws: 0, modePoints: {rapid:0, blitz:0, bullet:0, daily:0}, dominantMode: 'rapid'});
+      }
+      const orderedData = [data[1], data[0], data[2]];
+      const podiumEl = document.getElementById('podium');
+      podiumEl.innerHTML = '';
+      orderedData.forEach((player, idx) => {
+          const rankNum = idx === 1 ? 1 : (idx === 0 ? 2 : 3);
+          const profileUrl = `https://www.chess.com/member/${player.username}`;
+          
+          const topCapsuleHTML = player.points > 0
+              ? `<div class="stat-capsule">${MODE_ICONS[player.dominantMode] || ''} W${player.wins} D${player.draws}</div>`
+              : `<div class="stat-capsule" style="opacity:0;">-</div>`;
+          
+          let badgesHTML = '<div class="mode-badges">';
+          let hasBadges = false;
+          if(player.modePoints) {
+              Object.keys(player.modePoints).forEach(mode => {
+                  if(player.modePoints[mode] > 0) {
+                      hasBadges = true;
+                      badgesHTML += `<div class="badge-item"><span>${MODE_ICONS[mode]}</span><span>${player.modePoints[mode]}</span></div>`;
+                  }
+              });
+          }
+          if(!hasBadges) badgesHTML += `<div style="font-size:8px; color:#888;">No Games</div>`;
+          badgesHTML += '</div>';
+
+          const col = document.createElement('div');
+          col.className = `podium-column rank-${rankNum}`;
+          col.innerHTML = `
+              ${topCapsuleHTML}
+              <div class="profile-wrapper">
+                  <div class="rank-badge">${rankNum}</div>
+                  <a href="${profileUrl}" target="_blank">
+                      <img class="profile-img" src="${player.avatar}" onerror="this.src='${DEFAULT_AVATAR_RACE}';">
+                  </a>
+              </div>
+              <a href="${profileUrl}" target="_blank" class="username-race">@${player.username}</a>
+              ${badgesHTML}
+              <div class="pillar"><div class="pts">${player.points}</div><div class="pts-label">pts</div></div>
+          `;
+          podiumEl.appendChild(col);
+      });
+
+      function updateAgoTime() {
+          const diffMs = Date.now() - targetTime;
+          const diffMins = Math.floor(diffMs / 60000);
+          let timeAgoText = "";
+          if (diffMins < 1) {
+              timeAgoText = "Just now";
+          } else if (diffMins === 1) {
+              timeAgoText = "1 min ago";
+          } else if (diffMins < 60) {
+              timeAgoText = `${diffMins} mins ago`;
+          } else {
+              const diffHours = Math.floor(diffMins / 60);
+              timeAgoText = diffHours === 1 ? "1 hr ago" : `${diffHours} hrs ago`;
+          }
+          document.getElementById('update-time').innerText = `Resets 00:00 UTC\nUpdated: ${timeAgoText}`;
+      }
+
+      updateAgoTime();
+      setInterval(updateAgoTime, 60000);
+  }
+
+  initRaceSystem();
+</script>
